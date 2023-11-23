@@ -28,7 +28,7 @@
             					<input type="password" class="form-control" placeholder="Password" name="j_password" required style="margin-bottom:20px">
           					</div>
           					<div class="row" style="width:500px; flex-direction:row; margin-bottom:200px;">
-          						<button class="btn btn-sm btn-light" style="width:130px; height:30px; margin-left:12px;" type="submit">로그인</button>
+          						<button class="btn btn-sm btn-light" style="width:130px; height:30px; margin-left:12px;" type="submit">로그인1234</button>
           						<button class="btn btn-sm btn-dark" style="width:130px; height:30px; margin-left:12px" type="button">회원가입</button>
           					</div>
         				</form>       			
