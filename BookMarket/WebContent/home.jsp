@@ -10,7 +10,6 @@
 <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-
 		<%@ include file="navbar.jsp" %>
         <!-- 헤더 -->
         <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
@@ -25,6 +24,7 @@
                 </div>
             </div>
         </header>
+        <%@ include file="dbconn.jsp" %>
         <!-- 글 목록 -->
         <div class="container px-4 px-lg-5">
         		<!-- 작성하기 -->
@@ -35,65 +35,43 @@
                 <div class="d-flex justify-content-end ml-5">
                     <a class="btn btn-primary text-uppercase" href="#!">글 작성하기</a>
                 </div>
-                    <!-- Post preview-->
+                    <!-- DB 연결 -->
+			        <%
+			        	Statement stmt = null;
+			        	ResultSet rset = null;
+			        	try{
+			        		stmt = conn.createStatement();
+			        		String query = "SELECT * FROM post";
+			        		rset = stmt.executeQuery(query);	
+			        		// 결과 처리
+			        		while(rset.next()) {
+			        	  		int id = rset.getInt("id");
+			        		  	String title = rset.getString("title");
+			        		  	String content = rset.getString("content");
+			    	    	  	String createdDate = rset.getString("created_date");
+			        	  		String author = rset.getString("author");			        	
+			        %>
+			        <!-- 글 목록 -->
                     <div class="post-preview">
-                        <a href="post.jsp">
-                            <h2 class="post-title">여기에 글 제목이 나올 예정이에요</h2>
-                            <h3 class="post-subtitle">여긴 내용?</h3>
+                        <a href='./post.jsp?id=<%=id%>'>
+                            <h2 class="post-title"><%=title %></h2>
+                            <h3 class="post-subtitle"><%=content %></h3>
                         </a>
                         <p class="post-meta">
                             Posted by
-                            <a href="#!">작성자</a>
-                            on September 24, 2023
-                        </p>
-                    </div>
-                    
-                    <!-- Divider-->
-                    <hr class="my-4" />
-
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.jsp"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 18, 2023
-                        </p>
-                    </div>
-                    
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                            <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on August 24, 2023
-                        </p>
-                    </div>
-                    
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Failure is not an option</h2>
-                            <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on July 8, 2023
+                            <a href="#!"><%=author %></a>
+                            on <%=createdDate %>
                         </p>
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
+                    <%
+                    }
+			        		} 
+                   	catch (SQLException ex){
+			        		out.println("글 불러오기 실패 ㅠㅠ");
+			        	}
+                    %>
                 </div>
             </div>
         </div>
