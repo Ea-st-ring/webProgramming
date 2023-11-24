@@ -17,7 +17,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="home.jsp">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.jsp">Posts</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="posts.jsp">Posts</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login.jsp">Login</a></li>
                     </ul>
                 </div>
