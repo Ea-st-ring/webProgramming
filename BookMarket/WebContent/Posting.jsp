@@ -19,11 +19,20 @@
 			</div>
 		</div>
 	</header>
-	<div class = "hi" text-align="center">
+	<div class="post-preview">
+		<a href='./post.jsp?id=1'>
+			<h2 class="post-title">Random</h2>
+				<h3 class="post-subtitle">Default</h3>
+		</a>
+		<p class="post-meta">
+			Posted by<a href="#!">By me</a> on Sunday
+		</p>
 	</div>
-	--------------------
+	<div class="row gx-4 gx-lg-5 justify-content-center">
+	<p>--------------------</p>
 	<h4>글쓰기</h4>
-	--------------------
+	<p>--------------------</p>
+	</div>
 	<form name = "newPost" action = "./processPosting.jsp" class = "form-horizontal" method = "post" enctype = "multipart/form-data">
 
 		

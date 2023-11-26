@@ -2,7 +2,10 @@
 <%@ page import = "com.oreilly.servlet.*" %>
 <%@ page import = "com.oreilly.servlet.multipart.*" %>
 <%@ page import = "java.util.*" %>
-<%@ page import = "dummy.dom.Posting" %>
+<%@ page import = "dto.Post" %>
+<%@ page import = "dao.PostRepository" %>
+<%@ page import = "java.sql.*" %>
+<%@ include file = "dbconn.jsp"%>
 <%
 	request.setCharacterEncoding("utf-8");
 
@@ -16,16 +19,13 @@
 	String title = multi.getParameter("title");
 	String content = multi.getParameter("content");
 	content = content.replace("\r\n", "<br>");
+	String author = "Default";
 		
 	Enumeration files = multi.getFileNames();
 	String file = (String)files.nextElement();
 	String fileName = multi.getFilesystemName(file);
 	
-	
-	
-	
-	
-	Date day = new java.util.Date();
+	java.util.Date day = new java.util.Date();
 	int year = day.getYear() + 1900;
 	int month = day.getMonth();
 	int date = day.getDate();
@@ -36,23 +36,16 @@
 	if(hour == 0) CT = "0" + CT;
 	CT = year + "-" + month + "-" + date + " " + CT; 
 	
-	Posting newPosting = new Posting();
-	newPosting.setTitle(title);
-	newPosting.setContent(content);
-	newPosting.setAuthor("Default");
-	newPosting.setDate(CT);
-	newPosting.setFilename(fileName);
+	String sql = "insert into post (title, content, created_date, author) values(?,?,?,?)";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, title);
+	pstmt.setString(2, content);
+	pstmt.setString(3, CT);
+	pstmt.setString(4, author);
+	pstmt.executeUpdate();
+	
+	PostRepository dao = PostRepository.getInstance();
+	String id = Integer.toString(dao.getAllPosts().size());	
+	response.sendRedirect("./post.jsp?id=" + id);
+
 %>
-<html>
-<head>
-<title>Posted</title>
-</head>
-<body>
-	제목 : <%= newPosting.getTitle() %><p>
-	글쓴이 : <%= newPosting.getAuthor() %><p>
-	작성 시각 : <%= newPosting.getDate() %><p>
-	첨부파일 : <%= newPosting.getFilename() %><p>
-	내용 : <%= newPosting.getContent() %><p>
-	라는 글을 작성하셨습니다.
-</body>
-</html>
