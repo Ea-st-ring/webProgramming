@@ -3,6 +3,9 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import dto.Post;
 
 public class PostRepository {
@@ -19,9 +22,10 @@ public ArrayList<Post> getAllPosts() {
 
   try {
     // 데이터베이스 연결
-	String url = "jdbc:mysql://localhost:3306/WebProjectDB";
-	String user = "root";
-	String password = "mDonghyun24!";
+    InitialContext initialContext = new InitialContext();
+    String url = (String)initialContext.lookup("java:comp/env/DB_URL");
+    String user = (String)initialContext.lookup("java:comp/env/DB_USER");
+    String password = (String)initialContext.lookup("java:comp/env/DB_PASSWORD");
     Connection conn = DriverManager.getConnection(url, user, password);
 
     // 게시물 조회 쿼리 실행
@@ -48,7 +52,9 @@ public ArrayList<Post> getAllPosts() {
     conn.close();
   } catch (SQLException e) {
     e.printStackTrace();
-  }
+  }  catch (NamingException ex) {
+      ex.printStackTrace();
+  } 
 
   return listOfPosts;
 }
@@ -66,9 +72,10 @@ public ArrayList<Post> getAllPosts() {
 
 		  try {
 		    // 데이터베이스 연결
-			String url = "jdbc:mysql://localhost:3306/WebProjectDB";
-			String user = "root";
-			String password = "mDonghyun24!";
+			InitialContext initialContext = new InitialContext();
+			String url = (String)initialContext.lookup("java:comp/env/DB_URL");
+			String user = (String)initialContext.lookup("java:comp/env/DB_USER");
+			String password = (String)initialContext.lookup("java:comp/env/DB_PASSWORD");
 		    Connection conn = DriverManager.getConnection(url, user, password);
 
 		    // 게시물 조회 쿼리 실행
@@ -93,7 +100,9 @@ public ArrayList<Post> getAllPosts() {
 		    conn.close();
 		  } catch (SQLException e) {
 		    e.printStackTrace();
-		  }	
+		  }	 catch (NamingException ex) {
+			  ex.printStackTrace();
+		  } 
 	
 	return postById;
 	}

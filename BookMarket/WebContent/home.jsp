@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Mylog</title>
 <link rel ="stylesheet"
 	href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
@@ -32,9 +32,6 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
             
                 <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="d-flex justify-content-end ml-5">
-                    <a class="btn btn-primary text-uppercase" href="#!">글 작성하기</a>
-                </div>
                     <!-- DB 연결 -->
 			        <%
 			        	Statement stmt = null;
