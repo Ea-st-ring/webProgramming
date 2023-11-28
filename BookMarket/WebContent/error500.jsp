@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 </head>
+<link rel ="stylesheet"
+	href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
 <body>
 	<%@ include file="navbar.jsp" %>
         <!-- 헤더 -->
@@ -13,14 +16,13 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>📚My Log</h1>
+                            <h2>👨‍🔧 내부 서버에서 오류가 발생했습니다 👩‍🔧</h2>
                             <span class="subheading">머라넣징</span>
                         </div>
                     </div>
                 </div>
 			</div>
 		</header>
-	<h1>내부 서버에서 오류가 발생하였습니다.</h1>
 	<%@ include file="footer.jsp" %>
         <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
