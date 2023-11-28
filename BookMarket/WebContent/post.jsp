@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="dto.Post" %>
 <%@ page import="dao.PostRepository" %>
+<%@ page errorPage = "errorpage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
