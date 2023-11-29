@@ -42,7 +42,7 @@
             
                 <div class="col-md-10 col-lg-8 col-xl-7">
                 	<div class="d-flex justify-content-end ml-5">
-                    	<a class="btn btn-primary text-uppercase" href="#!">글 작성하기</a>
+                    	<a class="btn btn-primary text-uppercase" href="posting.jsp">글 작성하기</a>
                 	</div>
                 	<!-- DB 연결 -->
 			        <%
