@@ -51,7 +51,8 @@
 			        	try{
 			        		stmt = conn.createStatement();
 			        		String username = "황동현";
-			        		String query = "SELECT * FROM post where author='" + username +"'";
+			        		//String query = "SELECT * FROM post where author='" + username +"'";
+			        		String query = "select * from post";
 			        		rset = stmt.executeQuery(query);	
 			        		// 결과 처리
 			        		while(rset.next()) {
