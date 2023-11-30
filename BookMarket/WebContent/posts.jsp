@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page errorPage = "errorpage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,7 @@
             
                 <div class="col-md-10 col-lg-8 col-xl-7">
                 	<div class="d-flex justify-content-end ml-5">
-                    	<a class="btn btn-primary text-uppercase" href="#!">글 작성하기</a>
+                    	<a class="btn btn-primary text-uppercase" href="posting.jsp">글 작성하기</a>
                 	</div>
                 	<!-- DB 연결 -->
 			        <%
@@ -51,7 +52,8 @@
 			        	try{
 			        		stmt = conn.createStatement();
 			        		String username = "황동현";
-			        		String query = "SELECT * FROM post where author='" + username +"'";
+			        		//String query = "SELECT * FROM post where author='" + username +"'";
+			        		String query = "select * from post";
 			        		rset = stmt.executeQuery(query);	
 			        		// 결과 처리
 			        		while(rset.next()) {

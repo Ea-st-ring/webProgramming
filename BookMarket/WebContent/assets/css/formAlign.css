@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* vh stands for viewport height */
+}
+
+.form-container2 {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+form {
+  width: 200%; /* adjust this value to control the form's width */
+}
+.padding-left-15{
+	padding-left: 15px;
+}

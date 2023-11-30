@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.naming.*"%>
+<%@ page errorPage = "errorpage.jsp" %>
 <%
     Connection conn = null;    
     PreparedStatement pstmt = null;
