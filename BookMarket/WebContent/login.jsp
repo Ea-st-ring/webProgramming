@@ -20,7 +20,7 @@
             		<div class="col-lg-8 col-xl-7">  
             			<form class="form-signin" action="j_security_check" method="post">
           					<div class="form-group">
-            					<label for="inputUserName" class="sr-only">User Name</label>
+            					<label for="inputUserName" class="sr-only">ID</label>
             					<input type="text" class="form-control" placeholder="ID" name="j_username" required autofocus>
           					</div>
           					<div class="form-group">
@@ -28,10 +28,19 @@
             					<input type="password" class="form-control" placeholder="Password" name="j_password" required style="margin-bottom:20px">
           					</div>
           					<div class="row" style="width:500px; flex-direction:row; margin-bottom:200px;">
+<<<<<<< Updated upstream
           						<button class="btn btn-sm btn-light" style="width:130px; height:30px; margin-left:12px;" type="submit">로그인1234</button>
           						<button class="btn btn-sm btn-dark" style="width:130px; height:30px; margin-left:12px" type="button">회원가입</button>
+=======
+          						<button class="btn btn-sm btn-light" style="width:130px; height:30px; margin-left:12px;" type="submit">로그인</button>
+>>>>>>> Stashed changes
           					</div>
-        				</form>       			
+        				</form>  
+        				<form class="form-signin" action="loginSignUp.jsp" method="post">
+          					<div class="row" style="width:500px; flex-direction:row; margin-bottom:200px;">
+          						<button class="btn btn-sm btn-dark" style="width:130px; height:30px; margin-left:12px" type="submit">회원가입</button>
+          					</div>
+        				</form>      			
             		</div>
             </div>
             <%@ include file="footer.jsp"%>
