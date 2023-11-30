@@ -12,6 +12,7 @@ public class Post implements Serializable {
   private String content;
   private String createdDate;
   private String author;
+  private String fileName;
 
   public Post() {
     super();
@@ -63,5 +64,13 @@ public class Post implements Serializable {
 
   public void setAuthor(String author) {
     this.author = author;
+  }
+  
+  public String getFileName() {
+	return fileName;
+  }
+  
+  public void setFilename(String fileName) {
+	  this.fileName = fileName;
   }
 }
