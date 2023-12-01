@@ -44,7 +44,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text">파일 업로드</span>
 					</div>
-					<input type="file" name="inputGroupFile">
+					<input type="file" name="file">
 				</div>
 
 				<br><br>
