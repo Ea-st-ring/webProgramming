@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page errorPage = "errorpage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +28,7 @@
             					<input type="password" class="form-control" placeholder="Password" name="j_password" required style="margin-bottom:20px">
           					</div>
           					<div class="row" style="width:500px; flex-direction:row; margin-bottom:200px;">
-<<<<<<< Updated upstream
-          						<button class="btn btn-sm btn-light" style="width:130px; height:30px; margin-left:12px;" type="submit">로그인1234</button>
-          						<button class="btn btn-sm btn-dark" style="width:130px; height:30px; margin-left:12px" type="button">회원가입</button>
-=======
           						<button class="btn btn-sm btn-light" style="width:130px; height:30px; margin-left:12px;" type="submit">로그인</button>
->>>>>>> Stashed changes
           					</div>
         				</form>  
         				<form class="form-signin" action="loginSignUp.jsp" method="post">

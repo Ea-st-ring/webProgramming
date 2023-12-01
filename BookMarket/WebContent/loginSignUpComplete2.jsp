@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
-<%@ page import="javax.naming.InitialContext" %>
-<%@ page import="javax.naming.NamingException" %>
-<%@ page import="javax.sql.DataSource" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +36,7 @@ function validateForm() {
         alert("나이는 숫자로만 이루어져야 합니다.");
         return false;
     }
-	
+
     // 유효성 검사를 통과하면 로그인 폼을 제출
     document.forms[0].submit();
 }
@@ -52,17 +49,7 @@ function validateForm() {
             <%@ include file="navbar.jsp" %>
             	<div class="row justify-content-center">
             		<div class="col-lg-8 col-xl-7">
-           			  	<form action="loginSignUpProcess.jsp" >
-							<p> 사용자 아이디      : <input type="text" name="userId" id="userIdInput">
-							<p> 이          름 : 	<input type="text" name="userName" id="usernameInput">
-							<p> 비  밀  번  호   : 	<input type="text" name="password" id="passwordInput">
-							<p> 나          이 : 	<input type="text" name="userAge" id="userAge">
-							<p> 성          별 : 	<select name="gender">
-														<option value="0">남성</option>
-														<option value="1">여성</option>
-												</select>
-							<button class="btn btn btn-lg btn-success btn-block" type="button" onclick="validateForm()">회 원 가 입</button>
-						</form>
+           			  	<p> 회원가입이 완료되었습니다. 
 						<form action="login.jsp" method="post">
 							<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인 화면으로 돌아가기</button>	
 						</form>
