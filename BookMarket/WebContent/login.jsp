@@ -18,14 +18,14 @@
             <%@ include file="navbar.jsp" %>
             	<div class="row justify-content-center">
             		<div class="col-lg-8 col-xl-7">  
-            			<form class="form-signin" action="j_security_check" method="post">
+            			<form class="form-signin" action="loginLoginProcess.jsp" method="post">
           					<div class="form-group">
             					<label for="inputUserName" class="sr-only">ID</label>
-            					<input type="text" class="form-control" placeholder="ID" name="j_username" required autofocus>
+            					<input type="text" class="form-control" placeholder="ID" name="userId" required autofocus>
           					</div>
           					<div class="form-group">
             					<label for="inputPassword" class="sr-only">Password</label>
-            					<input type="password" class="form-control" placeholder="Password" name="j_password" required style="margin-bottom:20px">
+            					<input type="password" class="form-control" placeholder="Password" name="password" required style="margin-bottom:20px">
           					</div>
           					<div class="row" style="width:500px; flex-direction:row; margin-bottom:200px;">
           						<button class="btn btn-sm btn-light" style="width:130px; height:30px; margin-left:12px;" type="submit">로그인</button>
