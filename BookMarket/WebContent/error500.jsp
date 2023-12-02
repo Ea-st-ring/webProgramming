@@ -11,13 +11,12 @@
 <body>
 	<%@ include file="navbar.jsp" %>
         <!-- 헤더 -->
-        <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+        <header class="masthead" style="background-image: url('assets/img/error.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                             <h2>👨‍🔧 내부 서버에서 오류가 발생했습니다 👩‍🔧</h2>
-                            <span class="subheading">머라넣징</span>
                         </div>
                     </div>
                 </div>
