@@ -53,9 +53,11 @@
 
 				<div class="input-group mb-3 padding-left-15">
 					<div class="input-group-prepend">
-						<span class="input-group-text"><%= file_upload %></span>
+
+						<span class="input-group-text">사진 업로드[최대 16MB]</span>
+
 					</div>
-					<input type="file" name="inputGroupFile">
+					<input type="file" name="file">
 				</div>
 
 				<br><br>

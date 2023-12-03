@@ -12,12 +12,22 @@ public class Post implements Serializable {
   private String content;
   private String createdDate;
   private String author;
-  private String fileName;
-
+  private String fileBase64;
+  //fileBase64 : Base64 encoded file 
   public Post() {
     super();
   }
 
+  
+  public Post(String postId, String title, String content, String createdDate, String author, String fileBase64) {
+	    this.postId = postId;
+	    this.title = title;
+	    this.content = content;
+	    this.createdDate = createdDate;
+	    this.author = author;
+	    this.fileBase64 = fileBase64;
+  }
+  
   public Post(String postId, String title, String content, String createdDate, String author) {
     this.postId = postId;
     this.title = title;
@@ -66,11 +76,11 @@ public class Post implements Serializable {
     this.author = author;
   }
   
-  public String getFileName() {
-	return fileName;
+  public String getFileBase64() {
+	return fileBase64;
   }
   
-  public void setFilename(String fileName) {
-	  this.fileName = fileName;
+  public void setFilename(String fileBase64) {
+	  this.fileBase64 = fileBase64;
   }
 }
