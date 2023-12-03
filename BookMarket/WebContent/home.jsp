@@ -39,7 +39,7 @@
 			        	ResultSet rset = null;
 			        	try{
 			        		stmt = conn.createStatement();
-			        		String query = "SELECT * FROM post";
+			        		String query = "SELECT * FROM post ORDER BY created_date DESC";
 			        		rset = stmt.executeQuery(query);	
 			        		// 결과 처리
 			        		while(rset.next()) {

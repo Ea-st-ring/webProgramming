@@ -27,7 +27,7 @@
                             <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
                             <span class="meta">
                                 Posted by
-                                <a href="#!">Start Bootstrap</a>
+                                <a href="#!">Start MyLog</a>
                                 on August 24, 2023
                             </span>
                         </div>
@@ -52,8 +52,8 @@
 			        	try{
 			        		stmt = conn.createStatement();
 			        		String username = "황동현";
-			        		//String query = "SELECT * FROM post where author='" + username +"'";
-			        		String query = "select * from post";
+			        		String query = "SELECT * FROM post where author='" + username +"' ORDER BY created_date DESC";
+			        		//String query = "select * from post";
 			        		rset = stmt.executeQuery(query);	
 			        		// 결과 처리
 			        		while(rset.next()) {
