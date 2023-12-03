@@ -1,12 +1,23 @@
 package dao;
 
 import java.sql.*;
+
 import java.util.ArrayList;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import dto.Post;
+
+import java.io.InputStream;
+import java.io.File;
+import java.io.IOException;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import org.apache.commons.io.*;
+import org.apache.commons.io.output.ByteArrayOutputStream;
+import java.util.Base64;
+import java.util.Enumeration;
 
 public class PostRepository {
 	
@@ -40,10 +51,27 @@ public ArrayList<Post> getAllPosts() {
       String content = rs.getString("content");
       String createdDate = rs.getString("created_date");
       String author = rs.getString("author");
+      
+      String fileBase64 = null;
+      InputStream in = rs.getBinaryStream("fileBlob");
+      if(in != null) {
+	      BufferedImage bimg = ImageIO.read(in);
+	      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	      if(bimg != null) {
+			  ImageIO.write( bimg, "jpg", baos );
+			  baos.flush();
+			  byte[] imageInByteArray = baos.toByteArray();
+			  fileBase64 = Base64.getEncoder().encodeToString(imageInByteArray);
+	      }
+		  baos.close();
+		  in.close();
+      }
+
 
       // Post 객체 생성 및 리스트에 추가
-      Post post = new Post(id, title, content, createdDate, author);
+      Post post = new Post(id, title, content, createdDate, author, fileBase64);
       listOfPosts.add(post);
+      
     }
 
     // 자원 해제
@@ -52,9 +80,9 @@ public ArrayList<Post> getAllPosts() {
     conn.close();
   } catch (SQLException e) {
     e.printStackTrace();
-  }  catch (NamingException ex) {
-      ex.printStackTrace();
-  } 
+  } catch (IOException e) {
+	e.printStackTrace();
+  }
 
   return listOfPosts;
 }
@@ -90,19 +118,35 @@ public ArrayList<Post> getAllPosts() {
 		      String content = rs.getString("content");
 		      String createdDate = rs.getString("created_date");
 		      String author = rs.getString("author");
-
-		      postById = new Post(id, title, content, createdDate, author);
+		      
+		      String fileBase64 = null;
+		      InputStream in = rs.getBinaryStream("fileBlob");
+		      if(in != null) {
+			      BufferedImage bimg = ImageIO.read(in);
+			      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				  ImageIO.write( bimg, "jpg", baos );
+				  baos.flush();
+				  byte[] imageInByteArray = baos.toByteArray();
+				  fileBase64 = Base64.getEncoder().encodeToString(imageInByteArray);
+				  baos.close();
+				  in.close();
+		      }
+		      
+		      postById = new Post(id, title, content, createdDate, author, fileBase64);
 		    }
 
+		    
+
 		    // 자원 해제
+
 		    rs.close();
 		    stmt.close();
 		    conn.close();
 		  } catch (SQLException e) {
 		    e.printStackTrace();
-		  }	 catch (NamingException ex) {
-			  ex.printStackTrace();
-		  } 
+		  }	catch (IOException e) {
+			e.printStackTrace();
+		  }
 	
 	return postById;
 	}

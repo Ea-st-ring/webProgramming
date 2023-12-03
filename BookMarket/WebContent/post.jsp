@@ -3,6 +3,7 @@
 <%@ page import="dto.Post" %>
 <%@ page import="dao.PostRepository" %>
 <%@ page errorPage = "errorpage.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 	<!-- Navigation-->
 		<%@ include file="navbar.jsp" %>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+        <header class="masthead" style="background-image: url('assets/img/posting.jpg')">
         </header>
         <!-- Post Content-->
         
@@ -55,6 +56,26 @@
                 </div>
             </div>
         </article>
+		
+		<article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+        			<div class = "col-md-5">
+        			<%
+        				String b64 = post.getFileBase64();
+        				if(b64 == null){
+        					out.println("<img src='assets/img/default.jpg' style = 'width: 100%'/>");
+        				}
+        				else{
+        					out.println("<img src='data:image/jpg;base64," + b64 + "' style = 'width: 100%'/>");
+        				}
+        			%>
+					</div>
+				</div>
+			</div>
+		</article>
+		
+
         <%@ include file="footer.jsp" %>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

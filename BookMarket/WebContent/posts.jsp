@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page errorPage = "errorpage.jsp" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.Locale, java.util.ResourceBundle" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +16,13 @@
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+		<% ResourceBundle resourceBundle = ResourceBundle.getBundle("message", request.getLocale());%>
+		<% String writing = resourceBundle.getString("writing");%>
 <!-- Navigation-->
 		<%@ include file="navbar.jsp" %>
-		<%@ include file="dbconn.jsp" %>		
+		<%@ include file="dbconn.jsp" %>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+        <header class="masthead" style="background-image: url('assets/img/post.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -38,12 +42,12 @@
         <!-- Post Content-->
         <div class="container px-4 px-lg-5">
         		<!-- 작성하기 -->
-            
+
             <div class="row gx-4 gx-lg-5 justify-content-center">
-            
+
                 <div class="col-md-10 col-lg-8 col-xl-7">
                 	<div class="d-flex justify-content-end ml-5">
-                    	<a class="btn btn-primary text-uppercase" href="posting.jsp">글 작성하기</a>
+                    	<a class="btn btn-primary text-uppercase" href="posting.jsp"><%= writing %></a>
                 	</div>
                 	<!-- DB 연결 -->
 			        <%
