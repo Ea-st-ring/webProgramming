@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page errorPage = "errorpage.jsp" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.Locale, java.util.ResourceBundle" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,9 @@
 <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+		<% ResourceBundle resourceBundle = ResourceBundle.getBundle("message", request.getLocale());%>
+		<% String sub_title = resourceBundle.getString("sub_title");%>
+		<% String writing = resourceBundle.getString("writing");%>
 		<%@ include file="navbar.jsp" %>
         <!-- 헤더 -->
         <header class="masthead" style="background-image: url('assets/img/home.jpg')">
@@ -19,7 +24,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                             <h1>📚My Log</h1>
-                            <span class="subheading">당신을 완성하는 모든 순간의 아카이브</span>
+                            <span class="subheading"> <%= sub_title %> </span>
                         </div>
                     </div>
                 </div>
@@ -34,7 +39,7 @@
 
                 <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="d-flex justify-content-end ml-5">
-                    <a class="btn btn-primary text-uppercase" href="#!">글 작성하기</a>
+                    <a class="btn btn-primary text-uppercase" href="#!"><%= writing %></a>
                 </div>
                     <!-- DB 연결 -->
 			        <%
