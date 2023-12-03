@@ -22,7 +22,7 @@
 	<!-- Navigation-->
 		<%@ include file="navbar.jsp" %>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+        <header class="masthead" style="background-image: url('assets/img/posting.jpg')">
         </header>
         <!-- Post Content-->
         
