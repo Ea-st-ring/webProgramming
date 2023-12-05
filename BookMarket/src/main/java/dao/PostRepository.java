@@ -11,6 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import org.apache.commons.io.*;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import java.util.Base64;
@@ -25,14 +28,15 @@ public class PostRepository {
     return instance;
  }
 
-public ArrayList<Post> getAllPosts() {
+public ArrayList<Post> getAllPosts() throws NamingException {
   ArrayList<Post> listOfPosts = new ArrayList<Post>();
 
   try {
     // 데이터베이스 연결
-	String url = "jdbc:mysql://localhost:3306/WebProjectDB";
-	String user = "root";
-	String password = "mDonghyun24!";
+      InitialContext initialContext = new InitialContext();
+      String url = (String)initialContext.lookup("java:comp/env/DB_URL");
+      String user = (String)initialContext.lookup("java:comp/env/DB_USER");
+      String password = (String)initialContext.lookup("java:comp/env/DB_PASSWORD");
     Connection conn = DriverManager.getConnection(url, user, password);
 
     // 게시물 조회 쿼리 실행
@@ -78,7 +82,9 @@ public ArrayList<Post> getAllPosts() {
     e.printStackTrace();
   } catch (IOException e) {
 	e.printStackTrace();
-  }
+  } catch (NamingException ex) {
+      ex.printStackTrace();
+  } 
 
   return listOfPosts;
 }
