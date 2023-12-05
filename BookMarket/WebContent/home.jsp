@@ -10,7 +10,16 @@
 <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-
+		<%
+		    // 세션에서 사용자 정보 확인
+		    HttpSession userSession = request.getSession();
+		    String username = (String) session.getAttribute("username");
+		
+		    // 사용자가 로그인하지 않은 경우 로그인 페이지로 리디렉션
+		    if (username == null) {
+		        response.sendRedirect("login.jsp"); // 로그인 페이지의 경로로 변경
+		    }
+		%>
 		<%@ include file="navbar.jsp" %>
         <!-- 헤더 -->
         <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">

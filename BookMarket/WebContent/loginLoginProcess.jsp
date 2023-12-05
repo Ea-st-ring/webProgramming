@@ -50,6 +50,7 @@
 							        	//out.println("해당 아이디의 사용자가 존재합니다.");
 							        	if (rs.getString("id").equals(userId) && rs.getString("password").equals(password)){
 							        		out.println("로그인 성공!");	
+							        		session.setAttribute("username", userId);
 							        		response.sendRedirect("home.jsp");
 							        	}else{
 							        		out.println("아이디 혹은 비밀번호를 확인해 주세요");
