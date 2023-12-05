@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="dto.Post" %>
+<%@ page import="dao.PostRepository" %>
+<%@ page errorPage = "errorpage.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,21 +18,16 @@
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-	<%
-		    // 세션에서 사용자 정보 확인
-		    HttpSession userSession = request.getSession();
-		    String username = (String) session.getAttribute("username");
-		
-		    // 사용자가 로그인하지 않은 경우 로그인 페이지로 리디렉션
-		    if (username == null) {
-		        response.sendRedirect("login.jsp"); // 로그인 페이지의 경로로 변경
-		    }
-	%>
+
 <!-- Navigation-->
 		<%@ include file="navbar.jsp" %>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
-            <div class="container position-relative px-4 px-lg-5">
+
+        <header class="masthead" style="background-image: url('assets/img/posting.jpg')">
+        </header>
+        <!-- Post Content-->
+        
+        <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="post-heading">
@@ -74,6 +74,26 @@
                 </div>
             </div>
         </article>
+		
+		<article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+        			<div class = "col-md-5">
+        			<%
+        				String b64 = post.getFileBase64();
+        				if(b64 == null){
+        					out.println("<img src='assets/img/default.jpg' style = 'width: 100%'/>");
+        				}
+        				else{
+        					out.println("<img src='data:image/jpg;base64," + b64 + "' style = 'width: 100%'/>");
+        				}
+        			%>
+					</div>
+				</div>
+			</div>
+		</article>
+		
+
         <%@ include file="footer.jsp" %>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
