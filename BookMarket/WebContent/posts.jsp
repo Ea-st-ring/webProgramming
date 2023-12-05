@@ -39,7 +39,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="post-heading">
                             
-                            <h2 class="subheading"><%=saying %></h2>
+                            <h2 class="subheading" style="line-height:42px;"><%=saying %></h2>
                             <span class="meta">
                                 By - Toni Morrison
                             </span>
@@ -73,13 +73,18 @@
 			        		  	String title = rset.getString("title");
 			        		  	String content = rset.getString("content");
 			    	    	  	String createdDate = rset.getString("created_date");
-			        	  		String author = rset.getString("author");			        	
+			        	  		String author = rset.getString("author");		
+			        	  		// content에서 첫 번째 줄만 가져오기
+			                    int lineBreakIndex = content.indexOf("<br>");
+			                    if(lineBreakIndex != -1) {
+			                        content = content.substring(0, lineBreakIndex);
+			                    }
 			        %>
 			        <!-- 글 목록 -->
                     <div class="post-preview">
                         <a href='./post.jsp?id=<%=id%>'>
-                            <h2 class="post-title"><%=title %></h2>
-                            <h3 class="post-subtitle"><%=content %></h3>
+                            <h3 class="post-title" style="margin-bottom:16px;"><%=title %></h3>
+                            <h5 class="post-subtitle" style="width:330px; margin-bottom:16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%=content %></h5>
                         </a>
                         <p class="post-meta">
                             Posted by
