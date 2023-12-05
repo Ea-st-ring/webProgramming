@@ -10809,6 +10809,11 @@ header.masthead .post-heading .meta a {
   }
 }
 
+.login_btns{
+	display: flex;
+	flex-direction: row;
+}
+
 .login_wrapper {
 	height: 100vh !important;
 }
