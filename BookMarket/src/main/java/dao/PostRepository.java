@@ -146,7 +146,9 @@ public ArrayList<Post> getAllPosts() {
 		    e.printStackTrace();
 		  }	catch (IOException e) {
 			e.printStackTrace();
-		  }
+		  } catch (NamingException ex) {
+		        ex.printStackTrace();
+		  } 
 	
 	return postById;
 	}
