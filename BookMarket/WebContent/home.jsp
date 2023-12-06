@@ -39,7 +39,7 @@
 
                 <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="d-flex justify-content-end ml-5">
-                    <a class="btn btn-primary text-uppercase" href="#!"><%= writing %></a>
+                    <a class="btn btn-primary text-uppercase" href="./posting.jsp"><%= writing %></a>
                 </div>
                     <!-- DB 연결 -->
 			        <%
@@ -47,7 +47,7 @@
 			        	ResultSet rset = null;
 			        	try{
 			        		stmt = conn.createStatement();
-			        		String query = "SELECT * FROM post";
+			        		String query = "SELECT * FROM post ORDER BY created_date DESC";
 			        		rset = stmt.executeQuery(query);	
 			        		// 결과 처리
 			        		while(rset.next()) {
@@ -55,13 +55,17 @@
 			        		  	String title = rset.getString("title");
 			        		  	String content = rset.getString("content");
 			    	    	  	String createdDate = rset.getString("created_date");
-			        	  		String author = rset.getString("author");			        	
+			        	  		String author = rset.getString("author");	
+			        	  		int lineBreakIndex = content.indexOf("<br>");
+			                    if(lineBreakIndex != -1) {
+			                        content = content.substring(0, lineBreakIndex);
+			                    }
 			        %>
 			        <!-- 글 목록 -->
                     <div class="post-preview">
                         <a href='./post.jsp?id=<%=id%>'>
-                            <h2 class="post-title"><%=title %></h2>
-                            <h3 class="post-subtitle"><%=content %></h3>
+                            <h3 class="post-title" style="margin-bottom:16px;"><%=title %></h3>
+                            <h5 class="post-subtitle" style="width:330px; margin-bottom:16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%=content %></h5>
                         </a>
                         <p class="post-meta">
                             Posted by

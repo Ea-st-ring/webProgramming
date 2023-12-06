@@ -10,6 +10,17 @@
 <title>Post it</title>
 </head>
 <body>
+	<%
+	    // 세션에서 사용자 정보 확인
+	    HttpSession posting_userSession = request.getSession();
+	    String posting_username = (String) session.getAttribute("username");
+	
+	    // 사용자가 로그인하지 않은 경우 로그인 페이지로 리디렉션
+	    if (posting_username == null) {
+	        response.sendRedirect("login.jsp"); // 로그인 페이지의 경로로 변경
+	    }
+	%>
+
 	<% ResourceBundle resourceBundle = ResourceBundle.getBundle("message", request.getLocale());%>
 	<% String sub_title = resourceBundle.getString("sub_title");%>
 	<% String writing = resourceBundle.getString("writing");%>
@@ -54,7 +65,7 @@
 				<div class="input-group mb-3 padding-left-15">
 					<div class="input-group-prepend">
 
-						<span class="input-group-text">사진 업로드[최대 16MB]</span>
+						<span class="input-group-text"><%=file_upload %>[최대 16MB]</span>
 
 					</div>
 					<input type="file" name="file">

@@ -16,8 +16,19 @@
         <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+		<%
+		    // 세션에서 사용자 정보 확인
+		    HttpSession posts_userSession = request.getSession();
+		    String posts_username = (String) session.getAttribute("username");
+
+		    // 사용자가 로그인하지 않은 경우 로그인 페이지로 리디렉션
+		    if (posts_username == null) {
+		        response.sendRedirect("login.jsp"); // 로그인 페이지의 경로로 변경
+		    }
+		%>
 		<% ResourceBundle resourceBundle = ResourceBundle.getBundle("message", request.getLocale());%>
 		<% String writing = resourceBundle.getString("writing");%>
+		<% String saying = resourceBundle.getString("saying");%>
 <!-- Navigation-->
 		<%@ include file="navbar.jsp" %>
 		<%@ include file="dbconn.jsp" %>
@@ -27,12 +38,10 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="post-heading">
-                            <h1>Man must explore, and this is exploration at its greatest</h1>
-                            <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                            
+                            <h2 class="subheading" style="line-height:42px;"><%=saying %></h2>
                             <span class="meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2023
+                                By - Toni Morrison
                             </span>
                         </div>
                     </div>
@@ -55,23 +64,27 @@
 			        	ResultSet rset = null;
 			        	try{
 			        		stmt = conn.createStatement();
-			        		String username = "황동현";
-			        		//String query = "SELECT * FROM post where author='" + username +"'";
-			        		String query = "select * from post";
-			        		rset = stmt.executeQuery(query);	
+			        		String username = posts_username;
+			        		String query = "SELECT id,title,content,created_date,author FROM post where author='" + username +"' ORDER BY created_date DESC";
+			        		rset = stmt.executeQuery(query);
 			        		// 결과 처리
 			        		while(rset.next()) {
 			        	  		int id = rset.getInt("id");
 			        		  	String title = rset.getString("title");
 			        		  	String content = rset.getString("content");
 			    	    	  	String createdDate = rset.getString("created_date");
-			        	  		String author = rset.getString("author");			        	
+			        	  		String author = rset.getString("author");		
+			        	  		// content에서 첫 번째 줄만 가져오기
+			                    int lineBreakIndex = content.indexOf("<br>");
+			                    if(lineBreakIndex != -1) {
+			                        content = content.substring(0, lineBreakIndex);
+			                    }
 			        %>
 			        <!-- 글 목록 -->
                     <div class="post-preview">
                         <a href='./post.jsp?id=<%=id%>'>
-                            <h2 class="post-title"><%=title %></h2>
-                            <h3 class="post-subtitle"><%=content %></h3>
+                            <h3 class="post-title" style="margin-bottom:16px;"><%=title %></h3>
+                            <h5 class="post-subtitle" style="width:330px; margin-bottom:16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%=content %></h5>
                         </a>
                         <p class="post-meta">
                             Posted by
@@ -86,6 +99,7 @@
 			        		} 
                    	catch (SQLException ex){
 			        		out.println("글 불러오기 실패 ㅠㅠ");
+			        		ex.printStackTrace();
 			        	}
                     %>                    
                 </div>
