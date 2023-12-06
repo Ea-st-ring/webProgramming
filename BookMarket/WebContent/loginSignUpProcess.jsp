@@ -37,7 +37,7 @@
 							    String userAge = request.getParameter("userAge");
 							    String gender = request.getParameter("gender");
 							    String sql = "";
-							    String alert_text = "로그인 성공";
+							    String alert_text = "회원가입 성공";
 							    try {
 							        // 데이터베이스 연결 설정
 							        Class.forName("com.mysql.jdbc.Driver");
