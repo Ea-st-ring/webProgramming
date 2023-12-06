@@ -57,7 +57,7 @@ function validateForm() {
 		<% String male = resourceBundle.getString("male");%>
 		<% String female = resourceBundle.getString("female");%>				
         <div class="container-fluid p-0">
-        	<div class="masthead" style="background : url('assets/img/post-bg.jpg') no-repeat center center; background-size: cover; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity:0.5; z-index:-1"></div>
+        	<div class="masthead" style="background : url('assets/img/post-bg.jpg') no-repeat center center; background-size: cover; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity:0.4; z-index:-1"></div>
             <!-- 유저 로그인 폼 컨테이너 만들기 -->
             <div style="width:100%; height:100%; justify-content: center; align-items: center; display: flex; flex-direction: column; margin-top:100px; z-index:999;">
             <%@ include file="navbar.jsp" %>

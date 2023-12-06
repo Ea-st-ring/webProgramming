@@ -3,6 +3,7 @@
 <%@ page import="javax.naming.InitialContext" %>
 <%@ page import="javax.naming.NamingException" %>
 <%@ page import="javax.sql.DataSource" %>
+<%@ page import="java.util.Locale, java.util.ResourceBundle" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,13 +16,15 @@
 </head>
 
 <body>
+		<% ResourceBundle resourceBundle = ResourceBundle.getBundle("message", request.getLocale());%>
+		<% String back = resourceBundle.getString("back");%>
         <div class="container-fluid p-0">
-        	<div class="masthead" style="background : url('assets/img/post-bg.jpg') no-repeat center center; background-size: cover; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity:0.5; z-index:-1"></div>
+        	<div class="masthead" style="background : url('assets/img/post-bg.jpg') no-repeat center center; background-size: cover; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity:0.4; z-index:-1"></div>
             <!-- 유저 로그인 폼 컨테이너 만들기 -->
             <div style="width:100%; height:100%; justify-content: center; align-items: center; display: flex; flex-direction: column; margin-top:300px; z-index:999;">
             <%@ include file="navbar.jsp" %>
-            	<div class="row justify-content-center">
-            		<div class="col-lg-8 col-xl-7">
+            	<div class="row justify-content-center" style="width:500px;"> 
+            		<div class="col-lg-8 col-xl-7 justify-content-center align-items-center" style="width:500px;"> 
 							<%
 							    Connection conn = null;
 							    Statement stmt = null;
@@ -31,6 +34,7 @@
 							    //out.println(userId);
 							    //out.println(password);
 							    String sql = "";
+							    String notice = "";
 							    try {
 							        // 데이터베이스 연결 설정
 							        Class.forName("com.mysql.jdbc.Driver");
@@ -51,12 +55,12 @@
 							        		session.setAttribute("username", userId);
 							        		response.sendRedirect("home.jsp");
 							        	}else{
-							        		out.println("아이디 혹은 비밀번호를 확인해 주세요");
+							        		notice = "아이디 혹은 비밀번호를 확인해 주세요";
 							        	}
 							        	
 							        }
 							        else{ //위에서 전송한 쿼리문으로 나오는 결과값이 없을경우. 
-							        	out.println("아이디 혹은 비밀번호를 확인해 주세요");
+							        	notice = "아이디 혹은 비밀번호를 확인해 주세요";
 							        }
 							        stmt.close();
 							    
@@ -64,8 +68,10 @@
 							        e.printStackTrace();
 							    }
 							%>
-						<form action="login.jsp" method="post">
-							<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인 화면으로 돌아가기</button>	
+						<form action="login.jsp" method="post" style="margin-bottom:80px; width:500px; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+							<h4><%=notice %></h4>
+							<p> 
+							<button class="btn btn-sm btn-light" type="submit"><%=back %></button>	
 						</form>
             					
             		</div>
