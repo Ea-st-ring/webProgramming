@@ -61,7 +61,7 @@ function validateForm() {
             <!-- 유저 로그인 폼 컨테이너 만들기 -->
             <div style="width:100%; height:100%; justify-content: center; align-items: center; display: flex; flex-direction: column; margin-top:100px; z-index:999;">
             <%@ include file="navbar.jsp" %>
-<div class="container my-2" style="margin-bottom:80px;">
+<div class="container my-2" style="margin-bottom:80px; margin-top:60px !important;">
     <div class="row justify-content-center">
         <div class="col-lg-6 col-xl-5">
             <div class="card bg-transparent border-0">
