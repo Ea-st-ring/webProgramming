@@ -11,6 +11,13 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
+	HttpSession posting_userSession = request.getSession();
+	String author = (String) session.getAttribute("username");
+	
+	// 사용자가 로그인하지 않은 경우 로그인 페이지로 리디렉션
+	if (author == null) {
+	    response.sendRedirect("login.jsp"); // 로그인 페이지의 경로로 변경
+	}
 	//if there's no C:\\upload directory, error occurs - No directory
 	String realFolder = "C:\\upload";
 	int maxSize = 16 * 1024 * 1024;
@@ -21,7 +28,6 @@
 	String title = multi.getParameter("title");
 	String content = multi.getParameter("content");
 	content = content.replace("\r\n", "<br>");
-	String author = "Default";
 	
 	long fileSize = 0;
 	String fileType = "";
